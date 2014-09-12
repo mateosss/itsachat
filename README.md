@@ -5,10 +5,11 @@
 
 Software de Chat para envío de mensajes, archivos y muy pronto videconferencia.
 
-Pasos para usar:
-1. Descargar Server
-2. Iniciar Servidor
-3. Conectarse con los clientes configurados a la ip del servidor
+Pasos para usar:   
+
+1. Descargar Server   
+2. Iniciar Servidor   
+3. Conectarse con los clientes configurados a la ip del servidor  
 
 ##Características del programa
 
