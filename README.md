@@ -5,6 +5,11 @@
 
 Software de Chat para envío de mensajes, archivos y muy pronto videconferencia.
 
+Pasos para usar:
+1. Descargar Server
+2. Iniciar Servidor
+3. Conectarse con los clientes configurados a la ip del servidor
+
 ##Características del programa
 
 - Utiliza envío de mensajes sin ningún tipo de encriptación y a pesar de que esto es realmente inseguro, al estar destinado a un uso de aula y no tan privado, permite que desde cualquier dispositivo conectado a la red con un cliente de telnet pueda ingresar al chat (*como un celular por ejemplo*)
@@ -57,11 +62,11 @@ En todos los comandos da lo mismo usar mayúsculas o minúscula en las palabras 
 
 ####Cliente
 
-- **Client: **Maneja el socket Cliente-Server y deriva algunos comandos básicos como /archivo.
+- **Client:** Maneja el socket Cliente-Server y deriva algunos comandos básicos como /archivo.
 
 ####Server
 - **S2C:** Quiere decir *Server to Client* y maneja las conexiones individuales con cada cliente, hay una de estas clases instanciadas en el server por cada cliente
-- **Server: ** Maneja todas las conexiones con los clientes, los S2C, y ejecuta los comandos si es que se mandó alguno
+- **Server:** Maneja todas las conexiones con los clientes, los S2C, y ejecuta los comandos si es que se mandó alguno
 
 ####Clases Compartidas
 
