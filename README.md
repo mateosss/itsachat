@@ -5,10 +5,11 @@
 
 Software de Chat para envío de mensajes, archivos y muy pronto videconferencia.
 
-Pasos para usar:   
+Pasos para usar como servidor:   
 
-1. Descargar Server   
-2. Iniciar Servidor   
+1. Descargar Serve  
+2. Descargar Archivo sh, y ejecutar como superusuario, esto creará un servidor ftp en su ip y con el puerto 21
+2. Iniciar Servidor  
 3. Conectarse con los clientes configurados a la ip del servidor  
 
 ##Características del programa
