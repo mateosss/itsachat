@@ -1,5 +1,8 @@
 <img src='https://dl.dropboxusercontent.com/u/105638235/logo.png' width='128' height='128' title=''>
 
+Paquete de íconos MarkYoun utilizado, puede descargar el archivo de gráficos vectoriales de:
+https://dl.dropboxusercontent.com/u/105638235/Iconos.svg
+
 #ITSaChat
 
 
