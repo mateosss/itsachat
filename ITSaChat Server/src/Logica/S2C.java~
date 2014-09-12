@@ -1,0 +1,123 @@
+//S2C signfica Server to Client, osea la comunicacion entre el server con un cliente. 
+//se crea una de estas por cada cliente
+package Logica;
+
+//import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
+//import java.io.InputStream;
+//import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class S2C extends Thread {
+
+    Server server;
+    ObjectOutputStream salida;
+    //BufferedReader entrada;
+    ObjectInputStream entrada;
+    Socket socket;
+    boolean exit = false;
+
+    public S2C(String msg) {
+        super(msg);
+    }
+
+    @Override
+    public void run() {
+        try {
+            //entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            entrada = new ObjectInputStream(socket.getInputStream());
+            salida = new ObjectOutputStream(socket.getOutputStream());
+            salida.flush();
+            while (!exit) {
+
+                String mensaje = (String) entrada.readObject();
+                if (mensaje != null) {
+
+                    if (!mensaje.equals("")) {
+                        this.server.enviarMensaje(this, mensaje);
+
+                    }
+                } else {
+                    this.server.enviarMensaje(null, "alerta > " + this.getName() + " Se ha desconectado.");
+                    this.cerrarConexion();
+                }
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            System.err.println(this.getName() + " se ha desconectado.");
+            server.enviarMensaje(null, "alerta > " + this.getName() + " Se ha desconectado.");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(S2C.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+//metodos
+    public void enviarMensaje(String mensaje) {
+        try {
+            salida.writeUTF(mensaje);
+            salida.flush();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void cerrarConexion() {
+        try {
+            this.entrada.close();
+            this.salida.close();
+            this.socket.close();
+            this.exit = true;
+            System.out.println("me sali");
+        } catch (IOException ex) {
+            Logger.getLogger(S2C.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    //getters and setters
+    public ObjectOutputStream getSalida() {
+        return salida;
+    }
+
+    public void setSalida(ObjectOutputStream salida) {
+        this.salida = salida;
+    }
+
+    public ObjectInputStream getEntrada() {
+        return entrada;
+    }
+
+    public void setEntrada(ObjectInputStream entrada) {
+        this.entrada = entrada;
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    public Server getServer() {
+        return server;
+    }
+
+    public void setServer(Server server) {
+        this.server = server;
+    }
+
+    public boolean isExit() {
+        return exit;
+    }
+
+    public void setExit(boolean exit) {
+        this.exit = exit;
+    }
+
+}
