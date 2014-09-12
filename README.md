@@ -1,4 +1,4 @@
-![](https://dl.dropboxusercontent.com/u/105638235/logo.png "")
+<img src='https://dl.dropboxusercontent.com/u/105638235/logo.png' width='128' height='128' title=''>
 
 #ITSaChat
 
